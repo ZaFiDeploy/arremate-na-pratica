@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Falta 1 passo · Arremate na Prática</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<style>
+  :root{
+    --bg:#000; --card:#0d0d0f; --card2:#141417; --line:#232328;
+    --gold:#f5c542; --gold2:#ffd76a; --txt:#fff; --mut:#a1a1aa;
+    --green:#22c55e; --red:#ef4444;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"SF Pro Display","SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:560px;margin:0 auto;padding:0 18px}
+  .gold{color:var(--gold)}
+  b,strong{font-weight:700}
+
+  /* status */
+  .status{background:#06210f;border-bottom:1px solid #14532d;color:#86efac;font-size:13px;font-weight:600;text-align:center;padding:10px 12px}
+  .status span{color:#fff}
+  .steps{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 0 4px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .steps .s{display:flex;align-items:center;gap:6px}
+  .steps .dot{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;border:1.5px solid var(--line);color:var(--mut)}
+  .steps .done .dot{background:var(--green);border-color:var(--green);color:#000}
+  .steps .now{color:#fff}
+  .steps .now .dot{border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 4px rgba(245,197,66,.15)}
+  .steps .bar{width:22px;height:2px;background:var(--line)}
+  .steps .bar.on{background:var(--green)}
+  .warn{margin:14px auto 0;max-width:420px;text-align:center;font-size:13px;color:var(--gold2);background:rgba(245,197,66,.08);border:1px solid rgba(245,197,66,.25);border-radius:10px;padding:8px 12px}
+
+  /* hero */
+  .hero{padding:26px 0 8px;text-align:center}
+  .kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,66,.35);border-radius:999px;padding:5px 12px;margin-bottom:14px}
+  h1{font-size:30px;line-height:1.12;font-weight:800;letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--gold);text-shadow:0 0 28px rgba(245,197,66,.35)}
+  .sub{margin-top:12px;color:#d4d4d8;font-size:16px}
+  .heroimg{margin:22px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);position:relative;background:#0b0b0b}
+  .heroimg img{display:block;width:100%;height:auto}
+  .heroimg .tag{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:6px 10px;font-size:12px;text-align:left}
+  .heroimg .tag b{display:block;font-size:13px}
+
+  .btn{display:block;width:100%;text-align:center;text-decoration:none;font-weight:800;font-size:17px;letter-spacing:.01em;color:#000;background:linear-gradient(180deg,#ffe08a,var(--gold));border-radius:14px;padding:17px 16px;box-shadow:0 10px 30px rgba(245,197,66,.25);margin-top:20px}
+  .btn small{display:block;font-weight:600;font-size:12px;opacity:.75;margin-top:2px}
+
+  section{padding:34px 0 0}
+  h2{font-size:23px;line-height:1.2;font-weight:800;letter-spacing:-.01em;text-align:center}
+  .lead{color:#d4d4d8;text-align:center;margin-top:10px;font-size:15.5px}
+
+  /* bridge */
+  .bridge{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:18px;font-size:15.5px;color:#e4e4e7}
+  .bridge p+p{margin-top:10px}
+
+  /* mistakes */
+  .errs{display:grid;gap:10px;margin-top:18px}
+  .err{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:12px;padding:14px}
+  .err .x{flex:0 0 26px;height:26px;border-radius:8px;background:rgba(239,68,68,.12);color:#fca5a5;display:grid;place-items:center;font-weight:800}
+  .err b{display:block;font-size:15px}
+  .err span{color:var(--mut);font-size:14px}
+
+  /* modules */
+  .mods{margin-top:18px;display:grid;gap:10px}
+  .mod{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .mod .n{flex:0 0 34px;height:34px;border-radius:10px;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.3);color:var(--gold);font-weight:800;display:grid;place-items:center;font-size:14px}
+  .mod b{display:block;font-size:15.5px;line-height:1.3}
+  .mod span{display:block;color:var(--mut);font-size:13.5px;margin-top:3px}
+  .mod.bonus{border-color:rgba(34,197,94,.35);background:linear-gradient(180deg,rgba(34,197,94,.07),transparent)}
+  .mod.bonus .n{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.35);color:#86efac}
+
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .shots figure{background:#0b0b0b;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .shots img{display:block;width:100%;height:150px;object-fit:cover;object-position:top}
+  .shots figcaption{font-size:12px;color:var(--mut);padding:7px 9px}
+
+  /* compare */
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  .cmp div{border-radius:14px;padding:14px;font-size:14px}
+  .cmp .a{background:var(--card);border:1px solid var(--line);color:#d4d4d8}
+  .cmp .b{background:rgba(245,197,66,.07);border:1px solid rgba(245,197,66,.35)}
+  .cmp h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .cmp .a h3{color:var(--mut)} .cmp .b h3{color:var(--gold)}
+  .cmp li{list-style:none;margin-top:6px;padding-left:18px;position:relative}
+  .cmp .a li:before{content:"–";position:absolute;left:2px;color:var(--mut)}
+  .cmp .b li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+
+  /* authority */
+  .auth{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:18px}
+  .auth img{width:78px;height:78px;border-radius:12px;object-fit:cover;object-position:45% 30%;flex:0 0 78px}
+  .auth p{font-size:14.5px;color:#d4d4d8}
+  .auth b{color:#fff}
+
+  /* offer */
+  .offer{margin-top:22px;border-radius:20px;padding:22px 18px;background:radial-gradient(120% 80% at 50% 0%,rgba(245,197,66,.16),transparent 60%),var(--card2);border:1.5px solid rgba(245,197,66,.55);box-shadow:0 0 0 6px rgba(245,197,66,.06);text-align:center}
+  .offer .lbl{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#000;background:var(--gold);display:inline-block;border-radius:999px;padding:5px 12px}
+  .offer h3{font-size:20px;margin-top:12px;line-height:1.25}
+  .offer ul{text-align:left;margin:16px 0 0;display:grid;gap:7px}
+  .offer li{list-style:none;font-size:14.5px;padding-left:24px;position:relative;color:#e4e4e7}
+  .offer li:before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:900}
+  .price{margin-top:18px}
+  .price .de{color:var(--mut);font-size:15px}
+  .price .de s{color:#f87171}
+  .price .por{font-size:46px;font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-top:2px}
+  .price .por small{font-size:20px;font-weight:800;vertical-align:top;margin-right:3px}
+  .price .parc{color:var(--mut);font-size:13.5px;margin-top:4px}
+  .once{margin-top:12px;font-size:13px;color:var(--gold2)}
+  .gg{margin-top:16px}
+  .pay{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px;color:var(--mut);font-size:12.5px}
+
+  /* guarantee */
+  .gar{display:flex;gap:14px;align-items:center;margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .gar .seal{flex:0 0 64px;height:64px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;text-align:center;color:var(--gold);font-weight:900;font-size:20px;line-height:1}
+  .gar .seal small{display:block;font-size:9px;letter-spacing:.08em;font-weight:800}
+  .gar p{font-size:14px;color:#d4d4d8}
+
+  /* faq */
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:10px}
+  summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";color:var(--gold);font-weight:900}
+  details[open] summary:after{content:"–"}
+  details p{color:var(--mut);font-size:14.5px;margin-top:8px}
+
+  footer{padding:36px 0 120px;text-align:center;color:#52525b;font-size:12px}
+
+  /* sticky */
+  .sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(0,0,0,0),#000 35%);z-index:50;transform:translateY(120%);transition:transform .25s}
+  .sticky.show{transform:none}
+  .sticky a{display:flex;justify-content:space-between;align-items:center;max-width:560px;margin:0 auto;text-decoration:none;color:#000;background:linear-gradient(180deg,#ffe08a,var(--gold));border-radius:14px;padding:14px 18px;font-weight:800;font-size:15px;box-shadow:0 10px 30px rgba(245,197,66,.3)}
+  .sticky a span:last-child{font-size:17px}
+
+  @media (min-width:600px){ h1{font-size:36px} h2{font-size:27px} }
+</style>
+</head>
+<body>
+
+<div class="status">✅ Pagamento aprovado · <span>seu acesso ao Casa Barata já está garantido</span></div>
+
+<div class="wrap">
+  <div class="steps" aria-label="Etapas">
+    <div class="s done"><div class="dot">✓</div>Compra</div>
+    <div class="bar on"></div>
+    <div class="s now"><div class="dot">2</div>Complemento</div>
+    <div class="bar"></div>
+    <div class="s"><div class="dot">3</div>Acesso</div>
+  </div>
+  <p class="warn">⚠️ Não feche esta página. Esta condição aparece <b>uma única vez</b>.</p>
+
+  <header class="hero">
+    <span class="kicker">Exclusivo para quem acabou de comprar</span>
+    <h1>Você já tem as plataformas.<br><em>Agora veja o arremate acontecer do edital até a chave.</em></h1>
+    <p class="sub">O passo a passo que o Paulinho dos Leilões usa em cada operação, para você <b>não pagar caro pelo erro de iniciante</b> no seu primeiro lance.</p>
+
+    <div class="heroimg">
+      <img src="https://blackcasabaratadeleilao.com/assets/tutorial/passo-4.webp" alt="Paulinho dos Leilões" loading="eager">
+      <div class="tag"><b>Paulinho dos Leilões</b>+800 mil seguidores · referência em leilão de imóveis</div>
+    </div>
+
+    <a class="btn" href="#oferta">QUERO O PASSO A PASSO COMPLETO<small>Condição Black: de R$ 497 por R$ 147</small></a>
+  </header>
+
+  <section>
+    <h2>O app encontra a casa barata.<br><span class="gold">O processo é o que faz você ganhar com ela.</span></h2>
+    <div class="bridge">
+      <p>Com o Casa Barata você vai ver centenas de imóveis com 40%, 50% de desconto. Isso é ótimo. Mas é exatamente aí que o iniciante se empolga e erra.</p>
+      <p>Leilão não perdoa quem dá o lance antes de saber ler o edital, quem não confere a matrícula e quem descobre que o crédito não sai <b>depois</b> de arrematar.</p>
+    </div>
+
+    <div class="errs">
+      <div class="err"><div class="x">✕</div><div><b>Imóvel ocupado ou com dívida escondida</b><span>IPTU, condomínio e ocupação que estavam no edital, e ninguém leu.</span></div></div>
+      <div class="err"><div class="x">✕</div><div><b>Crédito negado depois do lance</b><span>Arrematou sem aprovação e agora precisa pagar à vista ou perder o sinal.</span></div></div>
+      <div class="err"><div class="x">✕</div><div><b>Lance sem conta feita</b><span>Pagou caro demais e o "desconto" sumiu entre ITBI, registro, reforma e desocupação.</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que você recebe no<br><span class="gold">Arremate na Prática</span></h2>
+    <p class="lead">Uma operação real, do começo ao fim, na ordem em que ela acontece.</p>
+
+    <div class="mods">
+      <div class="mod"><div class="n">01</div><div><b>Escolher o imóvel certo na plataforma</b><span>Como usar os filtros para separar oportunidade de armadilha.</span></div></div>
+      <div class="mod"><div class="n">02</div><div><b>Checklist do edital e da matrícula</b><span>Ocupação, débitos, IPTU, condomínio: o que conferir antes de qualquer coisa.</span></div></div>
+      <div class="mod"><div class="n">03</div><div><b>Viabilidade na calculadora</b><span>Saber o lucro e o seu teto de lance antes de entrar na disputa.</span></div></div>
+      <div class="mod"><div class="n">04</div><div><b>Crédito aprovado antes do lance</b><span>Como passar sua análise na Multy e na Fexô e entrar já sabendo quanto pode financiar.</span></div></div>
+      <div class="mod"><div class="n">05</div><div><b>Estratégia de lance</b><span>Venda online da Caixa, leilão judicial e extrajudicial: como jogar em cada um.</span></div></div>
+      <div class="mod"><div class="n">06</div><div><b>Compra: pagamento, ITBI e registro</b><span>O que pagar, quando pagar e como colocar o imóvel no seu nome.</span></div></div>
+      <div class="mod"><div class="n">07</div><div><b>Pós-arremate</b><span>Desocupação, reforma, revenda ou aluguel: como transformar o arremate em resultado.</span></div></div>
+      <div class="mod bonus"><div class="n">+</div><div><b>Acesso direto para agendar seu 1:1 com o time</b><span>Se quiser fazer a sua primeira operação junto com quem faz todo dia.</span></div></div>
+    </div>
+
+    <div class="shots">
+      <figure><img src="https://blackcasabaratadeleilao.com/assets/tutorial/passo-2.webp" alt="Imóveis filtrados na plataforma" loading="lazy"><figcaption>Do filtro na plataforma…</figcaption></figure>
+      <figure><img src="https://blackcasabaratadeleilao.com/assets/tutorial/passo-3-v2.webp" alt="Análise de crédito na Multy" loading="lazy"><figcaption>…ao crédito aprovado antes do lance</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mesmas ferramentas,<br>resultado diferente</h2>
+    <div class="cmp">
+      <div class="a"><h3>Só com o app</h3><ul><li>Acha a casa barata</li><li>Fica na dúvida se o edital tem risco</li><li>Não sabe quanto pode dar de lance</li><li>Descobre os custos depois</li></ul></div>
+      <div class="b"><h3>Com o passo a passo</h3><ul><li>Acha a casa barata</li><li>Confere edital e matrícula pelo checklist</li><li>Entra com teto de lance e crédito aprovado</li><li>Sabe o custo total antes de arrematar</li></ul></div>
+    </div>
+
+    <div class="auth">
+      <img src="https://blackcasabaratadeleilao.com/assets/tutorial/passo-4.webp" alt="Paulinho dos Leilões">
+      <p><b>Quem ensina é quem faz.</b> O Paulinho dos Leilões é um dos maiores nomes do leilão de imóveis no Brasil, com mais de 800 mil seguidores e anos de operações reais.</p>
+    </div>
+  </section>
+
+  <section id="oferta">
+    <div class="offer">
+      <span class="lbl">Condição Black · só nesta página</span>
+      <h3>Arremate na Prática<br><span class="gold">Do Edital à Chave</span></h3>
+      <ul>
+        <li>7 etapas de uma operação real, na ordem certa</li>
+        <li>Checklist de edital e matrícula</li>
+        <li>Viabilidade e crédito antes do lance</li>
+        <li>Estratégia de lance por modalidade</li>
+        <li>Compra, registro e pós-arremate</li>
+        <li>Acesso para agendar seu 1:1 com o time</li>
+      </ul>
+      <div class="price">
+        <div class="de">De <s>R$ 497</s> por apenas</div>
+        <div class="por"><small>R$</small>147</div>
+        <div class="parc">no Pix ou no cartão</div>
+      </div>
+      <p class="once">Se você sair desta página, essa condição não volta.</p>
+
+      <div class="gg" id="gg-area">
+      </div>
+
+      <div class="pay"><span>🔒 Pagamento seguro</span><span>⚡ Acesso na mesma área de membros</span></div>
+    </div>
+
+    <div class="gar">
+      <div class="seal">7<small>DIAS</small></div>
+      <p><b>Garantia incondicional de 7 dias.</b> Se não fizer sentido para você, é só pedir o reembolso dentro do prazo e devolvemos 100% do valor.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Dúvidas rápidas</h2>
+    <details><summary>Já comprei o Casa Barata. Preciso disso?</summary><p>O Casa Barata organiza a sua busca e a sua análise. O Arremate na Prática mostra o que fazer depois que você encontrou o imóvel: conferir, calcular, aprovar o crédito, dar o lance e concluir a compra.</p></details>
+    <details><summary>Como eu recebo?</summary><p>O acesso é liberado na mesma área de membros que você acabou de receber, e você também recebe o link no seu e-mail.</p></details>
+    <details><summary>Sou iniciante. Vou entender?</summary><p>Sim. O conteúdo segue a ordem real de uma operação, do primeiro filtro até a chave, sem pular etapa.</p></details>
+    <details><summary>Preciso ter dinheiro para começar?</summary><p>Não para aprender. No módulo de crédito você vê como entender quanto pode financiar antes de dar qualquer lance.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pediu, devolvemos 100%.</p></details>
+  </section>
+</div>
+
+<footer>© 2026 Paulinho dos Leilões · Arremate na Prática<br>Este conteúdo é educacional e não garante resultado em arremates.</footer>
+
+<div class="sticky" id="sticky"><a href="#oferta"><span>Quero por R$ 147</span><span>→</span></a></div>
+
+<script>
+  // barra fixa aparece depois do hero e some quando a oferta está na tela
+  (function(){
+    var st=document.getElementById('sticky'), off=document.getElementById('oferta');
+    function upd(){
+      var y=window.scrollY, r=off.getBoundingClientRect();
+      var inOffer=r.top<window.innerHeight && r.bottom>0;
+      st.classList.toggle('show', y>520 && !inOffer);
+    }
+    window.addEventListener('scroll',upd,{passive:true}); upd();
+  })();
+</script>
+<script>
+  // carrega os botões da ggCheckout (gg.html) e executa o script deles
+  (function(){
+    fetch('gg.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){
+      var area=document.getElementById('gg-area'), tmp=document.createElement('div'), scripts=[];
+      tmp.innerHTML=h;
+      tmp.querySelectorAll('script').forEach(function(s){
+        var n=document.createElement('script');
+        for(var i=0;i<s.attributes.length;i++){n.setAttribute(s.attributes[i].name,s.attributes[i].value)}
+        n.text=s.text; scripts.push(n); s.remove();
+      });
+      while(tmp.firstChild) area.appendChild(tmp.firstChild);
+      scripts.forEach(function(n){document.body.appendChild(n)});
+    });
+  })();
+</script>
+</body>
+</html>
