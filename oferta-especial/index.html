@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Última condição · Arremate na Prática</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<style>
+  :root{--bg:#000;--card:#0d0d0f;--card2:#141417;--line:#232328;--gold:#f5c542;--gold2:#ffd76a;--mut:#a1a1aa;--green:#22c55e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:#fff;font-family:-apple-system,"SF Pro Display","SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:540px;margin:0 auto;padding:0 18px}
+  .gold{color:var(--gold)}
+  .top{background:#2a0a0a;border-bottom:1px solid #7f1d1d;color:#fecaca;font-size:13px;font-weight:700;text-align:center;padding:10px 12px}
+  .hero{text-align:center;padding:30px 0 0}
+  .stop{font-size:44px;line-height:1}
+  h1{font-size:30px;line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-top:10px}
+  h1 em{font-style:normal;color:var(--gold)}
+  .sub{color:#d4d4d8;font-size:16px;margin-top:12px}
+  .box{margin-top:24px;border-radius:20px;padding:22px 18px;background:radial-gradient(120% 80% at 50% 0%,rgba(245,197,66,.16),transparent 60%),var(--card2);border:1.5px solid rgba(245,197,66,.55);text-align:center}
+  .lbl{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#000;background:var(--gold);display:inline-block;border-radius:999px;padding:5px 12px}
+  .box h2{font-size:20px;margin-top:12px;line-height:1.25}
+  .box ul{text-align:left;margin-top:16px;display:grid;gap:7px}
+  .box li{list-style:none;font-size:14.5px;padding-left:24px;position:relative;color:#e4e4e7}
+  .box li:before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:900}
+  .same{margin-top:14px;font-size:13.5px;color:#86efac;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:8px 10px}
+  .price{margin-top:16px}
+  .de{color:var(--mut);font-size:15px}
+  .de s{color:#f87171}
+  .por{font-size:50px;font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-top:2px}
+  .por small{font-size:20px;font-weight:800;vertical-align:top;margin-right:3px}
+  .parc{color:var(--mut);font-size:13.5px;margin-top:4px}
+  .once{margin-top:12px;font-size:13px;color:var(--gold2)}
+  .gg{margin-top:16px}
+  .gar{margin-top:16px;color:var(--mut);font-size:13px}
+  footer{padding:30px 0 40px;text-align:center;color:#52525b;font-size:12px}
+  @media (min-width:600px){h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div id="page">
+  <div class="top">⏳ Última condição antes de você acessar a área de membros</div>
+  <div class="wrap">
+    <header class="hero">
+      <div class="stop">✋</div>
+      <h1>Espera. Entendo se R$ 147 <em>pesou agora.</em></h1>
+      <p class="sub">Você não precisa sair sem o passo a passo do seu primeiro arremate. Para quem está começando agora, liberei <b>o mesmo conteúdo completo</b> por menos da metade.</p>
+    </header>
+
+    <div class="box">
+      <span class="lbl">Condição de quem está começando</span>
+      <h2>Arremate na Prática<br><span class="gold">Do Edital à Chave</span></h2>
+      <ul>
+        <li>Escolher o imóvel certo na plataforma</li>
+        <li>Checklist do edital e da matrícula</li>
+        <li>Viabilidade na calculadora</li>
+        <li>Crédito aprovado antes do lance</li>
+        <li>Estratégia de lance: Caixa, judicial e extrajudicial</li>
+        <li>Compra: pagamento, ITBI e registro</li>
+        <li>Pós-arremate: desocupação, reforma, revenda ou aluguel</li>
+        <li>Acesso para agendar seu 1:1 com o time</li>
+      </ul>
+      <p class="same">Mesmo conteúdo. Nada foi cortado.</p>
+      <div class="price">
+        <div class="de">De <s>R$ 147</s> por</div>
+        <div class="por"><small>R$</small>67</div>
+        <div class="parc">no Pix ou no cartão</div>
+      </div>
+      <p class="once">Esta é a última vez que essa condição aparece.</p>
+
+      <div class="gg" id="gg-area">
+      </div>
+
+      <p class="gar">🔒 Pagamento seguro · Garantia de 7 dias</p>
+    </div>
+  </div>
+  <footer>© 2026 Paulinho dos Leilões · Arremate na Prática</footer>
+</div>
+<script>
+  // carrega os botões da ggCheckout (gg.html) e executa o script deles
+  (function(){
+    fetch('gg.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){
+      var area=document.getElementById('gg-area'), tmp=document.createElement('div'), scripts=[];
+      tmp.innerHTML=h;
+      tmp.querySelectorAll('script').forEach(function(s){
+        var n=document.createElement('script');
+        for(var i=0;i<s.attributes.length;i++){n.setAttribute(s.attributes[i].name,s.attributes[i].value)}
+        n.text=s.text; scripts.push(n); s.remove();
+      });
+      while(tmp.firstChild) area.appendChild(tmp.firstChild);
+      scripts.forEach(function(n){document.body.appendChild(n)});
+    });
+  })();
+</script>
+</body>
+</html>
